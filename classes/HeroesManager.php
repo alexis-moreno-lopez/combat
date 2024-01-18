@@ -9,31 +9,46 @@
 class HeroesManager {
 
     private $db;
- private $allHeroes;
+    private array $heroesArray = [];
 
     public function __construct(PDO $db){ // le typage : c'est le type de l'objet/ exemple string = chaine de character/int = nombre/boolean = true ou false
-    $this->db = $db;
+    $this->db = $db; // heroesManager se connecte à la BDD et met les infos dans la variable $db
 
 
 
 }
-public function add($hero){
-    $request = $this->db->prepare("INSERT INTO heroes (name ) VALUES(:name)");
-    $request->execute([
+public function add($hero){  // je crée la méthode qui ajoute mon héro à la BDD
+    $request = $this->db->prepare("INSERT INTO heroes (name ) VALUES(:name)"); // je prépare une requet qui ajoute mon héro dans la BDD
+    $request->execute([ // j'éxécute 
 
-        'name' => $hero->getHeroName(),
+        'name' => $hero->getHeroName(), // je récupère le nom du héro et je l'insert dans la colonne name de ma table combat
         
     ]);
-    $id = $this->db->lastInsertId();
+    $id = $this->db->lastInsertId(); // je viens récupérer l'Id du dernier héro crée
     $hero->setId($id);
 }  
-public function findAllAlive() {
-
-
-$request = $this->db->query("SELECT health_point > 0 FROM heroes");
+public function findAllAlive() { // je crée la méthode qui récupère tous les héros qui ont encore leur point de vie 
+$request = $this->db->query("SELECT * FROM heroes WHERE health_point > 0 ");
 $allHeroes = $request->fetchAll();
-return $allHeroes;
+ // je les récupère et les mets dans allHeroes
+ foreach ($allHeroes as $hero ){ // je vais chercher tous mes héros dans le tableau $héro
+    $newHeroes = new Hero($hero); //j'instencie un nouveau héro dans ma table héro et le stock dans la variable $newHeroes
+    $newHeroes->setId($hero['id']); // j'associe l'id à mes héros
+    
+    
+    $this->heroesArray[] = $newHeroes; // récupération des héros dans le tableau
 }
+
+return $this->heroesArray; 
+}
+
+public function find($id) {
+    $request = $this->db->query("SELECT * FROM heroes  WHERE id = :id ");
+    $fightHero=$request->fetch();
+    $hero = new Hero($fightHero);
+    return $hero;
+}
+
 }
 
 ?>
