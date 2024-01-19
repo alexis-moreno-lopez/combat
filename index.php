@@ -6,7 +6,7 @@ require_once './config/db.php'; // je lie ma BDD
 require_once './config/autoload.php'; // je lie autoload qui permet de lié les fichiers HeroesManager et Hero
 $heroesManager = new HeroesManager($db); // j'instencie ma nouvelle classe
 $allHeroes = $heroesManager->findAllAlive();
-var_dump($allHeroes); // je récupère les infos (tous les héros qui ont encore leur point de vie) et les stocks dans la variables $allHeroes
+ // je récupère les infos (tous les héros qui ont encore leur point de vie) et les stocks dans la variables $allHeroes
 
 ?>
 <!DOCTYPE html>
@@ -32,8 +32,11 @@ var_dump($allHeroes); // je récupère les infos (tous les héros qui ont encore
   <div class="card-body">
     <h5 class="card-title"><?php echo $data->getHeroName() ?></h5> <!-- affiche le nom du héro-->
     <p class="card-text"><?php echo $data->getHeroLife()?></p> <!-- affiche la vie de mon héro -->
-    <a href="./fight.php" class="btn btn-primary" method="post">Choisir</a>
-    <input type="hidden" name="hero_id"<?php echo $data->setId('id'); ?>>  
+    <form action="./fight.php"method="post">
+      <input type="hidden" name="hero_id"<?php echo $data->getId('id'); ?>>  
+      <button type="submit">choisir</button>
+    </form>
+    
   </div>
 </div>
 <?php } ?>

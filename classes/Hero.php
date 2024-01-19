@@ -22,18 +22,30 @@ public function hitMonster() { // je crée la méthode qui sert à frapper un mo
 
 }
 
-public function hit(){ // je crée la méthode qui sert à frapper
 
-
+public function setHeroName($heroName){
+$this->heroName=$heroName;
 }
 public function getHeroName(){ // je crée la méthode qui sert à récupérer le nom du héro
 return $this->heroName;
+}
+public function setHeroLife($heroLife){
+    $this->heroLife=$heroLife;
 }
 public function getHeroLife() { // je crée la méthode qui récupère la vie du héro
 return $this->heroLife;
 }
 public function setId($id){ // je crée la méthode qui affecte l'id du héro
 $this->id = $id;
+}
+public function getId() {
+    return $this->id;
+}
+public function hit(Monster $monster): int {
+    $damage = rand(0,50);
+    $monsterLife = $monster->getMonsterLife();
+    $monster->setMonsterLife($monsterLife - $damage);
+    return $damage;
 }
 
 

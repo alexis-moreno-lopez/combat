@@ -17,7 +17,7 @@ class HeroesManager {
 
 
 }
-public function add($hero){  // je crée la méthode qui ajoute mon héro à la BDD
+public function add(Hero $hero){  // je crée la méthode qui ajoute mon héro à la BDD
     $request = $this->db->prepare("INSERT INTO heroes (name ) VALUES(:name)"); // je prépare une requet qui ajoute mon héro dans la BDD
     $request->execute([ // j'éxécute 
 
@@ -43,10 +43,13 @@ return $this->heroesArray;
 }
 
 public function find($id) {
-    $request = $this->db->query("SELECT * FROM heroes  WHERE id = :id ");
+    $request = $this->db->query("SELECT * FROM heroes  WHERE id ");
     $fightHero=$request->fetch();
     $hero = new Hero($fightHero);
     return $hero;
+}
+public function update() {
+
 }
 
 }
