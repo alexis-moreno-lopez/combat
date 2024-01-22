@@ -16,9 +16,9 @@ return $monster;
 public function fight(Hero $hero , Monster $monster) {
     $combatLog = array();
     while ($hero->getHeroLife() > 0 && $monster->getMonsterLife() > 0) {
-        echo "<p>Le monstre attaque "  . $hero->getHeroName() . " et lui inflige " . $monster->hit($hero) . " points de degats</p>";
+        echo "<p class='monster'>Le monstre attaque "  . $hero->getHeroName() . " et lui inflige <span>" . $monster->hit($hero) . " </span> points de degats</p>";
         
-        echo "<p>Le héros attaque "  . $monster->getMonsterName() . " et lui inflige " . $hero->hit($monster) . " points de degats</p>";
+        echo "<p class='hero'>Le héros attaque " . $monster->getMonsterName() . " et lui inflige <span>" .  $hero->hit($monster) . "</span> points de degats</p>";
     }
         
 }

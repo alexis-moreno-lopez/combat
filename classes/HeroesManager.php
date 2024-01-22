@@ -43,13 +43,26 @@ return $this->heroesArray;
 }
 
 public function find($id) {
+
     $request = $this->db->query("SELECT * FROM heroes  WHERE id ");
     $fightHero=$request->fetch();
     $hero = new Hero($fightHero);
+    $hero->setId($fightHero['id']);
     return $hero;
-}
-public function update() {
 
+}
+public function update(Hero $hero) {
+   
+
+ $request = $this->db->prepare("UPDATE heroes SET health_point = :health_point WHERE id = :id");
+ $request->execute([
+
+    
+    'health_point' => $hero->getHeroLife(),
+    'id' => $hero->getId(),
+]);
+
+ 
 }
 
 }
