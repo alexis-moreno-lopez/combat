@@ -47,12 +47,29 @@ public function hit(Monster $monster): int {
     $monster->setMonsterLife($monsterLife - $damage);
     return $damage;
 }
-
-
-
+public function setType($type) {
+    $this->type = $type;
+}
+public function getType() {
+    return $this->type;
+}
 
 }
 
+// class Guerrier extends Hero {
 
+//     public function hit(Ogre $monster): int {
+//         $damage = rand(0,50);
+//         $monsterLife = $monster->getMonsterLife();
+//         $monster->setMonsterLife($monsterLife - $damage);
+//         return $damage;
+//     }
+
+// }
+
+// class Mage extends Hero {
+
+// }
+// class Archer extends Hero
 
 ?>

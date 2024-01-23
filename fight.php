@@ -34,13 +34,14 @@ if(isset($_POST['hero_id'])) {
             $heroesManager->update($hero);
         ?>
     </div>
-<div class="perso">
+    <div class="perso">
         <div class="perso1">
-        <img src="./img/yoshiatack.png" alt="">
-    </div>
-    <div class="perso2">
-        <img class="" src="./img/linatack.png" alt="">
-    </div>
+            <img src="./img/yoshiatack.png" alt="">
+        </div>
+        <div class="perso2">
+            <img class="" src="./img/linatack.png" alt="">
+        </div>
+        <div> <a href="./index.php"><button  class="btn2" type="submit">Retour</button></a></div>
     </div>
     
 </div>

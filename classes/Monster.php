@@ -31,6 +31,23 @@ class Monster {
     }
     
 }
+// class Ogre extends Monster {
+//     public function hit(Hero $archer): int {
+//         if ($this instanceof Ogre && $hero instanceof Archer)
+//         $damage = rand(0,50)*2;
+//         $heroHealPoint = $hero->getHeroLife();
+//         $hero->setHeroLife($heroHealPoint - $damage);
+//         return $damage;
+//     }
+// }
+// class Sorcier extends Monster {
 
+// }
+// class Fantassin extends Monster {
 
+// }
+
+// $ogre = new Ogre();
+// $sorcier = new Sorcier();
+// $fantassin = new Fantassin();
 ?>

@@ -23,6 +23,12 @@ $allHeroes = $heroesManager->findAllAlive();
 <form action="" class="justify-content-center d-flex" method="post">
 <label class="text-white me-1" for="text" name="champ">inscription : </label>
 <input id="input" class="a" type="text"name="pseudo" placeholder="pseudo">
+<select id="select">
+  <option selected>Guerrier</option>
+  <option value="1">Mage</option>
+  <option value="2">archer</option>
+
+</select>
 <button class="btn ms-1" type="submit" name="validation">Valider</button>
 </form>
 <div class="d-flex flex-wrap">
